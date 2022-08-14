@@ -1,11 +1,31 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
 const Hero = () => {
+  const srcBase = "/images/hero-img";
   return (
     <Wrapper>
-      <HeroImage src="/images/hero-img.jpg" />
-      <Swoop src="/swoop.svg" />
+      <picture>
+        <source
+          type="image/avif"
+          srcSet={`${srcBase}.avif 1x,
+          ${srcBase}@2x.avif 2x,
+          ${srcBase}@3x.avif 3x
+          `}
+        />
+        <source
+          type="image/jpeg"
+          srcSet={`${srcBase}.jpg 1x,
+          ${srcBase}@2x.jpg 2x,
+          ${srcBase}@3x.jpg 3x"
+          `}
+        />
+        <HeroImage
+          src={`${srcBase}.jpg`}
+          alt="Big center example of a cat with big blue eyes in a black ground"
+        />
+      </picture>
+      <Swoop src="/swoop.svg" alt="" />
     </Wrapper>
   );
 };
